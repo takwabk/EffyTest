@@ -36,20 +36,12 @@ export class ProjectInfoComponent {
     let initValue = this.service.projectInfo();
     this.projectInfoForm = this.fb.group({
       isOwner: [initValue?.isOwner],
-      householdSize: [
-        initValue?.householdSize,
-        Validators.required,
-        Validators.min(0),
-      ],
+      householdSize: [initValue?.householdSize, Validators.required],
       householdIncome: [
         initValue?.householdIncome,
         [Validators.required, Validators.min(10), Validators.max(100)],
       ],
-      propertyArea: [
-        initValue?.propertyArea,
-        Validators.required,
-        Validators.min(0),
-      ],
+      propertyArea: [initValue?.propertyArea, Validators.required],
     });
   }
 
@@ -69,11 +61,10 @@ export class ProjectInfoComponent {
     return this.projectInfoForm.get('propertyArea');
   }
   onSubmit() {
-    if (this.projectInfoForm.valid) {
-      console.log('Project Info Form submitted:', this.projectInfoForm.value);
-      this.service.setProjectInfo(this.projectInfoForm.value);
-      this.router.navigate(['/summary']);
-      this.projectInfoForm.reset();
-    }
+    if (!this.projectInfoForm.valid) return;
+    console.log('Project Info Form submitted:', this.projectInfoForm.value);
+    this.service.setProjectInfo(this.projectInfoForm.value);
+    this.router.navigate(['/summary']);
+    this.projectInfoForm.reset();
   }
 }

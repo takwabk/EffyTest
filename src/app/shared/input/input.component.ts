@@ -20,6 +20,7 @@ export class InputComponent implements ControlValueAccessor {
   @Input() placeholder = '';
   @Input() type = '';
   @Input() maxlength = '';
+  @Input() min = '';
   constructor(@Self() public ngControl: NgControl) {
     this.ngControl.valueAccessor = this;
 

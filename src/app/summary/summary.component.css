@@ -16,12 +16,10 @@
   margin-top: 20px;
 }
 
-.eligible-message {
-  color: green;
-  font-weight: bold;
-}
-
-.not-eligible-message {
-  color: red;
-  font-weight: bold;
+.message {
+  font-size: 40px;
+  font-family: Dancing Script, sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+  color: #00a8a5;
 }

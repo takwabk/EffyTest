@@ -1,7 +1,8 @@
 <div class="form-container">
   <shared-title [title]="'Les résultats des simulations proposées par Effy*'"></shared-title>
+  <p class="message">{{ message() }}</p>
   <div *ngIf="projectInfos()?.isOwner ">
-    <p>{{ message() }}</p>
+
     <p>Coût du projet : {{ projectCost | currency:'EUR':'symbol':'1.2-2'}}</p>
     <ng-container *ngIf="calculateEffyAid() > 0">
       <p>Aide Effy : {{ calculateEffyAid() | currency:'EUR':'symbol':'1.2-2' }}

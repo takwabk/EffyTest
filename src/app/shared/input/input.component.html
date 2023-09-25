@@ -1,6 +1,6 @@
 <label for="label">{{label}}:</label>
 <input id="{{label}}" type="{{ type }}" maxlength="{{ maxlength }}" placeholder="{{ placeholder }}"
-  [formControl]="control" class="form-control" />
+  [formControl]="control" class="form-control" min="{{ min }}" />
 
 
 <div *ngIf="control && control.invalid && (control.dirty || control.touched)" class="error">
@@ -8,6 +8,5 @@
   <div *ngIf="control.errors?.['maxlength']">{{label}} ne doit pas dépasser 50 caractères.</div>
   <div *ngIf="control.errors?.['email']">Veuillez entrer un {{label}} valide.</div>
   <div *ngIf="control.errors?.['pattern']">Veuillez entrer un numéro de téléphone valide.</div>
-  <div *ngIf="control.errors?.['minlength']">Veuillez entrer un numéro Superieur à 0.</div>
   <div *ngIf="control.errors?.['min'] || control.errors?.['max']">Les revenus doivent être entre 10k et 100k.</div>
 </div>
