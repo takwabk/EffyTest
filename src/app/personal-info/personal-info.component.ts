@@ -1,12 +1,30 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { PersonalInfoService } from '../personal-info.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { TitleComponent } from '../shared/title/title.component';
+import { InputComponent } from '../shared/input/input.component';
+import { ButtonComponent } from '../shared/button/button.component';
 
 @Component({
   selector: 'app-personal-info',
   templateUrl: './personal-info.component.html',
   styleUrls: ['./personal-info.component.css'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    TitleComponent,
+    InputComponent,
+    ButtonComponent,
+  ],
 })
 export class PersonalInfoComponent implements OnInit {
   private service = inject(PersonalInfoService);
@@ -55,9 +73,8 @@ export class PersonalInfoComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.personalInfoForm.valid) {
-      console.log('Personal Info Form submitted:', this.personalInfoForm.value);
-    }
+    if (!this.personalInfoForm.valid) return;
+    this.service.isFormsValide = true;
     console.log(this.personalInfoForm.value);
     this.service.setPersonalInfo(this.personalInfoForm.value);
     this.router.navigate(['/project']);

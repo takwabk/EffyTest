@@ -34,3 +34,18 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+h1 {
+  font-style: italic !important;
+  font-size: 20px !important;
+  line-height: 20px !important;
+  font-family: gilroybold, sans-serif !important;
+}
+.big-separator {
+  display: inline-block;
+  width: 60px;
+  height: 8px;
+  margin: 23px auto 8px;
+  border-radius: 32px;
+  background-color: #74ffa7;
+  text-align: center;
+}

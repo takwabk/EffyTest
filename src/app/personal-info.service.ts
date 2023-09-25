@@ -9,22 +9,6 @@ import { Injectable, computed, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class PersonalInfoService {
-  // private readonly personalInfoSubject = new Subject<PersonalInfo>();
-  // getPersonalInfo$: Observable<PersonalInfo> =
-  //   this.personalInfoSubject.asObservable();
-  // setPersonalInfo(info: PersonalInfo) {
-  //   this.personalInfoSubject.next(info);
-  // }
-
-  // private readonly projectInfoSubject = new Subject<PersonalInfo>();
-
-  // setProjectInfo(info: PersonalInfo) {
-  //   this.projectInfoSubject.next(info);
-  // }
-
-  // getProjectInfo() {
-  //   return this.projectInfoSubject.asObservable();
-  // }
   personalInfo = signal<PersonalInfo | null>(null);
 
   setPersonalInfo(info: PersonalInfo) {
@@ -36,4 +20,5 @@ export class PersonalInfoService {
   setProjectInfo(info: ProjectInfo) {
     this.projectInfo.set(info);
   }
+  isFormsValide = false;
 }

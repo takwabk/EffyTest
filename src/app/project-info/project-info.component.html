@@ -6,46 +6,28 @@
         RETOUR
       </a>
     </div>
-
   </div>
-
-
   <div class="form-container">
+    <shared-title [title]="'Renseigner les informations du projet*'"></shared-title>
     <form [formGroup]="projectInfoForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
       <div class="form-group form-check">
         <input type="checkbox" id="isOwner" formControlName="isOwner" class="form-check-input" />
-        <label class="form-check-label" for="isOwner">Propriétaire ?</label>
+        <label class="form-check-label" for="isOwner">Etes vous Propriétaire ?</label>
       </div>
-
       <div class="form-group">
-        <label for="householdSize">Nombre de personnes dans le foyer:</label>
-        <input type="number" id="householdSize" formControlName="householdSize" class="form-control" />
+        <shared-input [label]="'Nombre de personnes dans le foyer'" [placeholder]="''" formControlName="householdSize"
+          [maxlength]="''" [type]="'number'"></shared-input>
       </div>
-
       <div class="form-group">
-        <label for="householdIncome">Revenus du foyer (entre 10k et 100k):</label>
-        <input type="number" id="householdIncome" formControlName="householdIncome" class="form-control" />
-        <div *ngIf="householdIncome && householdIncome.invalid && (householdIncome.dirty || householdIncome.touched)"
-          class="error">
-          <div *ngIf="householdIncome.hasError('required')">Revenus du foyer sont requis.</div>
-          <div *ngIf="householdIncome.hasError('min') || householdIncome.hasError('max')">Les revenus doivent être
-            entre
-            10k et 100k.</div>
-        </div>
+        <shared-input [label]="'Revenus du foyer (entre 10k et 100k)'" [placeholder]="''"
+          formControlName="householdIncome" [maxlength]="''" [type]="'number'"></shared-input>
       </div>
-
       <div class="form-group">
-        <label for="propertyArea">Surface du bien (m2):</label>
-        <input type="number" id="propertyArea" formControlName="propertyArea" class="form-control" />
-        <div *ngIf="propertyArea && propertyArea.invalid && (propertyArea.dirty || propertyArea.touched)" class="error">
-          <div *ngIf="propertyArea.hasError('required')">La surface du bien est requise.</div>
-        </div>
+        <shared-input [label]="'Surface du bien (m2)'" [placeholder]="''" formControlName="propertyArea"
+          [maxlength]="''" [type]="'number'"></shared-input>
       </div>
-      <div class="text-center">
-        <button type="submit" [disabled]="projectInfoForm.invalid" class="btn btn-primary">TERMINER</button>
-      </div>
+      <shared-button [label]="'TERMINER'" [type]="'submit'" [disabled]="projectInfoForm.invalid"
+        (onSubmitForm)="onSubmit()"></shared-button>
     </form>
   </div>
-
-
 </div>

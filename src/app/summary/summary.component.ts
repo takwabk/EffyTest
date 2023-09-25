@@ -1,19 +1,20 @@
 import { Component, computed, effect, inject } from '@angular/core';
 import { PersonalInfoService } from '../personal-info.service';
+import { CommonModule } from '@angular/common';
+import { TitleComponent } from '../shared/title/title.component';
 
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.css'],
+  standalone: true,
+  imports: [CommonModule, TitleComponent],
 })
 export class SummaryComponent {
   private service = inject(PersonalInfoService);
 
   personalInfos = this.service.personalInfo;
   projectInfos = this.service.projectInfo;
-  constructor() {
-    effect(() => {});
-  }
 
   message = computed(
     () =>
@@ -37,6 +38,4 @@ export class SummaryComponent {
     }
     return 0;
   }
-  // montant======
-  // montant()
 }

@@ -2,16 +2,29 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  AbstractControl,
+  ReactiveFormsModule,
 } from '@angular/forms';
 import { PersonalInfoService } from '../personal-info.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TitleComponent } from '../shared/title/title.component';
+import { ButtonComponent } from '../shared/button/button.component';
+import { InputComponent } from '../shared/input/input.component';
 
 @Component({
   selector: 'app-project-info',
   templateUrl: './project-info.component.html',
   styleUrls: ['./project-info.component.css'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    TitleComponent,
+    ButtonComponent,
+    InputComponent,
+  ],
 })
 export class ProjectInfoComponent {
   projectInfoForm!: FormGroup;
@@ -20,14 +33,15 @@ export class ProjectInfoComponent {
   private router = inject(Router);
 
   constructor(private fb: FormBuilder) {
+    let initValue = this.service.projectInfo();
     this.projectInfoForm = this.fb.group({
-      isOwner: [false, Validators.required],
-      householdSize: ['', Validators.required],
+      isOwner: [initValue?.isOwner, Validators.required],
+      householdSize: [initValue?.householdSize, Validators.required],
       householdIncome: [
-        '',
+        initValue?.householdIncome,
         [Validators.required, Validators.min(3), Validators.max(10000)],
       ],
-      propertyArea: ['', Validators.required],
+      propertyArea: [initValue?.propertyArea, Validators.required],
     });
   }
 

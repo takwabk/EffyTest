@@ -1,32 +1,28 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Route, Routes } from '@angular/router';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { ProjectInfoComponent } from './project-info/project-info.component';
 import { SummaryComponent } from './summary/summary.component';
-import { HeaderComponent } from './header/header.component';
-import { formGuard } from './form.guard';
+import { personalnfoGuard } from './personalnfo.guard';
 
-const routes: Routes = [
+export const routes: Route[] = [
   {
     path: 'project',
     component: ProjectInfoComponent,
-    canDeactivate: [formGuard],
+    canActivate: [personalnfoGuard],
   },
   {
     path: '',
     component: PersonalInfoComponent,
     pathMatch: 'full',
   },
-  { path: 'summary', component: SummaryComponent },
+  {
+    path: 'summary',
+    component: SummaryComponent,
+    canActivate: [personalnfoGuard],
+  },
   //PAGE NOT FOOUND
   {
     path: '**',
     redirectTo: '',
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

@@ -1,14 +1,8 @@
 <div class="form-container">
-  <div class="text-center">
-    <h1>obtenez votre estimation des aides *
-    </h1>
-  </div>
-  <div class="text-center"><span class="big-separator text-center"></span></div>
-
+  <shared-title [title]="'obtenez votre estimation des aides *'"></shared-title>
   <form [formGroup]="personalInfoForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
     <div class="row">
       <div class="form-group">
-
         <div aria-label="Civilité">
           <label class="btn btn-custom mr-8" style="margin-right: 18px!important;"
             [ngClass]="{ 'active': personalInfoForm.get('civility')?.value === 'Monsieur' }">
@@ -19,53 +13,28 @@
           </label>
         </div>
       </div>
-
-
-
-
     </div>
-
     <div class="row">
       <div class="form-group col-md-6 ">
-        <label for="lastName">Nom:</label>
-        <input type="text" id="lastName" formControlName="lastName" class="form-control" />
-        <div *ngIf="lastName && lastName.invalid && (lastName.dirty || lastName.touched)" class="error">
-          <div *ngIf="lastName.hasError('required')">Nom est requis.</div>
-          <div *ngIf="lastName.hasError('maxlength')">Nom ne doit pas dépasser 50 caractères.</div>
-        </div>
+        <shared-input [label]="'Nom'" [placeholder]="''" formControlName="lastName" [maxlength]="'42'"
+          [type]="'text'"></shared-input>
       </div>
-
       <div class="form-group col-md-6">
-        <label for="firstName">Prénom:</label>
-        <input type="text" id="firstName" formControlName="firstName" class="form-control" />
-        <div *ngIf="firstName && firstName.invalid && (firstName.dirty || firstName.touched)" class="error">
-          <div *ngIf="firstName.hasError('required')">Prénom est requis.</div>
-          <div *ngIf="firstName.hasError('maxlength')">Prénom ne doit pas dépasser 50 caractères.</div>
-        </div>
+        <shared-input [label]="'Prénom'" [placeholder]="''" formControlName="firstName" [maxlength]="'42'"
+          [type]="'text'"></shared-input>
       </div>
     </div>
-
     <div class="row">
       <div class="form-group col-md-6 ">
-        <label for="email">Email:</label>
-        <input type="email" id="email" formControlName="email" class="form-control" />
-        <div *ngIf="email && email.invalid && (email.dirty || email.touched)" class="error">
-          <div *ngIf="email.hasError('required')">Email est requis.</div>
-          <div *ngIf="email.hasError('email')">Veuillez entrer un email valide.</div>
-        </div>
+        <shared-input [label]="'Email'" [placeholder]="''" formControlName="email" [maxlength]="'42'"
+          [type]="'email'"></shared-input>
       </div>
-
       <div class="form-group col-md-6">
-        <label for="phone">Téléphone:</label>
-        <input type="tel" id="phone" formControlName="phone" class="form-control" />
-        <div *ngIf="phone && phone.invalid && (phone.dirty || phone.touched)" class="error">
-          <div *ngIf="phone.hasError('required')">Téléphone est requis.</div>
-          <div *ngIf="phone.hasError('pattern')">Veuillez entrer un numéro de téléphone valide.</div>
-        </div>
+        <shared-input [label]="'Téléphone'" [placeholder]="''" formControlName="phone" [maxlength]="'42'"
+          [type]="'tel'"></shared-input>
       </div>
     </div>
-    <div class="text-center">
-      <button type="submit" [disabled]="personalInfoForm.invalid" class="btn btn-primary">Continuer</button>
-    </div>
+    <shared-button [label]="'Continuer'" [type]="'submit'" [disabled]="personalInfoForm.invalid"
+      (onSubmitForm)="onSubmit()"></shared-button>
   </form>
 </div>
