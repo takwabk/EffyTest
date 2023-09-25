@@ -8,5 +8,6 @@
   <div *ngIf="control.errors?.['maxlength']">{{label}} ne doit pas dépasser 50 caractères.</div>
   <div *ngIf="control.errors?.['email']">Veuillez entrer un {{label}} valide.</div>
   <div *ngIf="control.errors?.['pattern']">Veuillez entrer un numéro de téléphone valide.</div>
+  <div *ngIf="control.errors?.['minlength']">Veuillez entrer un numéro Superieur à 0.</div>
   <div *ngIf="control.errors?.['min'] || control.errors?.['max']">Les revenus doivent être entre 10k et 100k.</div>
 </div>

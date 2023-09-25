@@ -16,7 +16,7 @@
       </div>
       <div class="form-group">
         <shared-input [label]="'Nombre de personnes dans le foyer'" [placeholder]="''" formControlName="householdSize"
-          [maxlength]="''" [type]="'number'"></shared-input>
+          [minlength]="'0'" [type]="'number'"></shared-input>
       </div>
       <div class="form-group">
         <shared-input [label]="'Revenus du foyer (entre 10k et 100k)'" [placeholder]="''"
@@ -24,7 +24,7 @@
       </div>
       <div class="form-group">
         <shared-input [label]="'Surface du bien (m2)'" [placeholder]="''" formControlName="propertyArea"
-          [maxlength]="''" [type]="'number'"></shared-input>
+          [minlength]="'0'" [type]="'number'"></shared-input>
       </div>
       <shared-button [label]="'TERMINER'" [type]="'submit'" [disabled]="projectInfoForm.invalid"
         (onSubmitForm)="onSubmit()"></shared-button>

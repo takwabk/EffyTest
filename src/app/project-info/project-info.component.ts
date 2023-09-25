@@ -36,12 +36,20 @@ export class ProjectInfoComponent {
     let initValue = this.service.projectInfo();
     this.projectInfoForm = this.fb.group({
       isOwner: [initValue?.isOwner],
-      householdSize: [initValue?.householdSize, Validators.required],
+      householdSize: [
+        initValue?.householdSize,
+        Validators.required,
+        Validators.min(0),
+      ],
       householdIncome: [
         initValue?.householdIncome,
-        [Validators.required, Validators.min(3), Validators.max(10000)],
+        [Validators.required, Validators.min(10), Validators.max(100)],
       ],
-      propertyArea: [initValue?.propertyArea, Validators.required],
+      propertyArea: [
+        initValue?.propertyArea,
+        Validators.required,
+        Validators.min(0),
+      ],
     });
   }
 
