@@ -1,0 +1,20 @@
+.form-check-input[type="checkbox"]:checked {
+  background-color: #48d362 !important;
+}
+
+button {
+  background: linear-gradient(86deg, #00a8a5 23%, #4dd8a6 75%, #74f0a7 110%);
+  border: 0;
+  border-radius: 35px;
+  font-size: 16px;
+  min-width: 260px;
+}
+button:hover {
+  box-shadow: 0 10px 12px #00000040;
+}
+.iconleft {
+  margin-right: 20px;
+  color: #003250;
+  font-size: 16px;
+  cursor: pointer;
+}

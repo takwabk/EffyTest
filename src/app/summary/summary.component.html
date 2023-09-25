@@ -1,0 +1,21 @@
+<div class="summary-container">
+  <h3>Les résultats des simulations proposées par Effy</h3>
+
+  <div *ngIf="projectInfos()?.isOwner">
+    <p>{{ message() }}</p>
+    <p>Coût du projet : {{ projectCost | currency:'EUR':'symbol':'1.2-2'}}</p>
+    <ng-container *ngIf="calculateEffyAid() > 0; else notEligible">
+      <p>Aide Effy : {{ calculateEffyAid() }} €
+        <span>
+          <h4>félicitations vous êtes
+            éligibile à notre programme d’aides et d’accompagnement</h4>
+        </span>
+      </p>
+    </ng-container>
+  </div>
+
+  <ng-template #notEligible>
+    <p> Vous n'êtes pas
+      éligibile à notre programme d’aides et d’accompagnement</p>
+  </ng-template>
+</div>

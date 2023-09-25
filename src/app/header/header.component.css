@@ -1,0 +1,7 @@
+img {
+  width: 2rem;
+  height: 3rem;
+}
+.responsive__active {
+  display: block !important;
+}
