@@ -35,7 +35,7 @@ export class ProjectInfoComponent {
   constructor(private fb: FormBuilder) {
     let initValue = this.service.projectInfo();
     this.projectInfoForm = this.fb.group({
-      isOwner: [initValue?.isOwner, Validators.required],
+      isOwner: [initValue?.isOwner],
       householdSize: [initValue?.householdSize, Validators.required],
       householdIncome: [
         initValue?.householdIncome,
